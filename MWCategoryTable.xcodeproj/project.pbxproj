@@ -8,24 +8,51 @@
 
 /* Begin PBXBuildFile section */
 		7AE27A852293C41A00F7947B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27A842293C41A00F7947B /* AppDelegate.m */; };
-		7AE27A882293C41A00F7947B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27A872293C41A00F7947B /* ViewController.m */; };
-		7AE27A8B2293C41A00F7947B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AE27A892293C41A00F7947B /* Main.storyboard */; };
 		7AE27A8D2293C41C00F7947B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AE27A8C2293C41C00F7947B /* Assets.xcassets */; };
 		7AE27A902293C41C00F7947B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AE27A8E2293C41C00F7947B /* LaunchScreen.storyboard */; };
 		7AE27A932293C41C00F7947B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27A922293C41C00F7947B /* main.m */; };
+		7AE27AA92293C46500F7947B /* UIViewController+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27AA32293C46500F7947B /* UIViewController+Swizzle.m */; };
+		7AE27AAA2293C46500F7947B /* CallStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27AA72293C46500F7947B /* CallStack.m */; };
+		7AE27AAB2293C46500F7947B /* ObserveCaton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27AA82293C46500F7947B /* ObserveCaton.m */; };
+		7AE27AAE2293C74400F7947B /* MWCategoryTableDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27AAD2293C74400F7947B /* MWCategoryTableDemoViewController.m */; };
+		7AE27AB22293C9BF00F7947B /* MWCategoryListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27AB12293C9BF00F7947B /* MWCategoryListView.m */; };
+		7AE27AB52293CAB300F7947B /* MWCategoryTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27AB42293CAB300F7947B /* MWCategoryTabView.m */; };
+		7AE27AB92293D70000F7947B /* MWCategoryTabButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27AB82293D70000F7947B /* MWCategoryTabButton.m */; };
+		7AE27ABC2293DCAF00F7947B /* MWCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27ABB2293DCAF00F7947B /* MWCategoryModel.m */; };
+		7AE27AC02294150000F7947B /* MWCategoryTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27ABF2294150000F7947B /* MWCategoryTableCell.m */; };
+		7AE27AC3229417B400F7947B /* MWCategoryTableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27AC2229417B400F7947B /* MWCategoryTableManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7AE27A802293C41A00F7947B /* MWCategoryTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MWCategoryTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AE27A832293C41A00F7947B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7AE27A842293C41A00F7947B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7AE27A862293C41A00F7947B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		7AE27A872293C41A00F7947B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		7AE27A8A2293C41A00F7947B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7AE27A8C2293C41C00F7947B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7AE27A8F2293C41C00F7947B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7AE27A912293C41C00F7947B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7AE27A922293C41C00F7947B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7AE27AA32293C46500F7947B /* UIViewController+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Swizzle.m"; sourceTree = "<group>"; };
+		7AE27AA42293C46500F7947B /* CallStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallStack.h; sourceTree = "<group>"; };
+		7AE27AA52293C46500F7947B /* ObserveCaton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObserveCaton.h; sourceTree = "<group>"; };
+		7AE27AA62293C46500F7947B /* UIViewController+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Swizzle.h"; sourceTree = "<group>"; };
+		7AE27AA72293C46500F7947B /* CallStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallStack.m; sourceTree = "<group>"; };
+		7AE27AA82293C46500F7947B /* ObserveCaton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObserveCaton.m; sourceTree = "<group>"; };
+		7AE27AAC2293C74400F7947B /* MWCategoryTableDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryTableDemoViewController.h; sourceTree = "<group>"; };
+		7AE27AAD2293C74400F7947B /* MWCategoryTableDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWCategoryTableDemoViewController.m; sourceTree = "<group>"; };
+		7AE27AB02293C9BF00F7947B /* MWCategoryListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryListView.h; sourceTree = "<group>"; };
+		7AE27AB12293C9BF00F7947B /* MWCategoryListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWCategoryListView.m; sourceTree = "<group>"; };
+		7AE27AB32293CAB300F7947B /* MWCategoryTabView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryTabView.h; sourceTree = "<group>"; };
+		7AE27AB42293CAB300F7947B /* MWCategoryTabView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWCategoryTabView.m; sourceTree = "<group>"; };
+		7AE27AB62293CB3A00F7947B /* MWCategoryItemProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryItemProtocol.h; sourceTree = "<group>"; };
+		7AE27AB72293D70000F7947B /* MWCategoryTabButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryTabButton.h; sourceTree = "<group>"; };
+		7AE27AB82293D70000F7947B /* MWCategoryTabButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWCategoryTabButton.m; sourceTree = "<group>"; };
+		7AE27ABA2293DCAF00F7947B /* MWCategoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryModel.h; sourceTree = "<group>"; };
+		7AE27ABB2293DCAF00F7947B /* MWCategoryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWCategoryModel.m; sourceTree = "<group>"; };
+		7AE27ABE2294150000F7947B /* MWCategoryTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryTableCell.h; sourceTree = "<group>"; };
+		7AE27ABF2294150000F7947B /* MWCategoryTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWCategoryTableCell.m; sourceTree = "<group>"; };
+		7AE27AC1229417B400F7947B /* MWCategoryTableManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryTableManager.h; sourceTree = "<group>"; };
+		7AE27AC2229417B400F7947B /* MWCategoryTableManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWCategoryTableManager.m; sourceTree = "<group>"; };
+		7AE27AC4229418D500F7947B /* MWCategoryTableManagerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryTableManagerProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,17 +85,52 @@
 		7AE27A822293C41A00F7947B /* MWCategoryTable */ = {
 			isa = PBXGroup;
 			children = (
+				7AE27AA22293C46500F7947B /* Observe */,
 				7AE27A832293C41A00F7947B /* AppDelegate.h */,
 				7AE27A842293C41A00F7947B /* AppDelegate.m */,
-				7AE27A862293C41A00F7947B /* ViewController.h */,
-				7AE27A872293C41A00F7947B /* ViewController.m */,
-				7AE27A892293C41A00F7947B /* Main.storyboard */,
+				7AE27AAC2293C74400F7947B /* MWCategoryTableDemoViewController.h */,
+				7AE27AAD2293C74400F7947B /* MWCategoryTableDemoViewController.m */,
+				7AE27ABA2293DCAF00F7947B /* MWCategoryModel.h */,
+				7AE27ABB2293DCAF00F7947B /* MWCategoryModel.m */,
+				7AE27AC1229417B400F7947B /* MWCategoryTableManager.h */,
+				7AE27AC2229417B400F7947B /* MWCategoryTableManager.m */,
+				7AE27AAF2293C86100F7947B /* MWCategoryListView */,
 				7AE27A8C2293C41C00F7947B /* Assets.xcassets */,
 				7AE27A8E2293C41C00F7947B /* LaunchScreen.storyboard */,
 				7AE27A912293C41C00F7947B /* Info.plist */,
 				7AE27A922293C41C00F7947B /* main.m */,
 			);
 			path = MWCategoryTable;
+			sourceTree = "<group>";
+		};
+		7AE27AA22293C46500F7947B /* Observe */ = {
+			isa = PBXGroup;
+			children = (
+				7AE27AA62293C46500F7947B /* UIViewController+Swizzle.h */,
+				7AE27AA32293C46500F7947B /* UIViewController+Swizzle.m */,
+				7AE27AA42293C46500F7947B /* CallStack.h */,
+				7AE27AA72293C46500F7947B /* CallStack.m */,
+				7AE27AA52293C46500F7947B /* ObserveCaton.h */,
+				7AE27AA82293C46500F7947B /* ObserveCaton.m */,
+			);
+			path = Observe;
+			sourceTree = "<group>";
+		};
+		7AE27AAF2293C86100F7947B /* MWCategoryListView */ = {
+			isa = PBXGroup;
+			children = (
+				7AE27AB62293CB3A00F7947B /* MWCategoryItemProtocol.h */,
+				7AE27AC4229418D500F7947B /* MWCategoryTableManagerProtocol.h */,
+				7AE27AB02293C9BF00F7947B /* MWCategoryListView.h */,
+				7AE27AB12293C9BF00F7947B /* MWCategoryListView.m */,
+				7AE27ABE2294150000F7947B /* MWCategoryTableCell.h */,
+				7AE27ABF2294150000F7947B /* MWCategoryTableCell.m */,
+				7AE27AB32293CAB300F7947B /* MWCategoryTabView.h */,
+				7AE27AB42293CAB300F7947B /* MWCategoryTabView.m */,
+				7AE27AB72293D70000F7947B /* MWCategoryTabButton.h */,
+				7AE27AB82293D70000F7947B /* MWCategoryTabButton.m */,
+			);
+			path = MWCategoryListView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,7 +192,6 @@
 			files = (
 				7AE27A902293C41C00F7947B /* LaunchScreen.storyboard in Resources */,
 				7AE27A8D2293C41C00F7947B /* Assets.xcassets in Resources */,
-				7AE27A8B2293C41A00F7947B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,8 +202,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AE27A882293C41A00F7947B /* ViewController.m in Sources */,
+				7AE27AC3229417B400F7947B /* MWCategoryTableManager.m in Sources */,
+				7AE27AB22293C9BF00F7947B /* MWCategoryListView.m in Sources */,
+				7AE27AA92293C46500F7947B /* UIViewController+Swizzle.m in Sources */,
+				7AE27AB52293CAB300F7947B /* MWCategoryTabView.m in Sources */,
+				7AE27AB92293D70000F7947B /* MWCategoryTabButton.m in Sources */,
 				7AE27A932293C41C00F7947B /* main.m in Sources */,
+				7AE27ABC2293DCAF00F7947B /* MWCategoryModel.m in Sources */,
+				7AE27AAA2293C46500F7947B /* CallStack.m in Sources */,
+				7AE27AAB2293C46500F7947B /* ObserveCaton.m in Sources */,
+				7AE27AAE2293C74400F7947B /* MWCategoryTableDemoViewController.m in Sources */,
+				7AE27AC02294150000F7947B /* MWCategoryTableCell.m in Sources */,
 				7AE27A852293C41A00F7947B /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,14 +220,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		7AE27A892293C41A00F7947B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7AE27A8A2293C41A00F7947B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7AE27A8E2293C41C00F7947B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -286,7 +348,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ME369AXE67;
 				INFOPLIST_FILE = MWCategoryTable/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +366,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ME369AXE67;
 				INFOPLIST_FILE = MWCategoryTable/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

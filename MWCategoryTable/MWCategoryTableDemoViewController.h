@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MWCategoryTableDemoViewController.h
 //  MWCategoryTable
 //
 //  Created by 石茗伟 on 2019/5/21.
@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface MWCategoryTableDemoViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END
