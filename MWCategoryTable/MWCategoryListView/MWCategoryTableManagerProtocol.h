@@ -15,7 +15,7 @@
 
 @required
 - (UIEdgeInsets)inset;
-- (UIScrollView *)tableView;
+- (UIScrollView *)contentTableView;
 
 @end
 

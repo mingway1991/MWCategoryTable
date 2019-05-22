@@ -172,6 +172,8 @@
         _listCollectionView.delegate = self;
         _listCollectionView.pagingEnabled = YES;
         _listCollectionView.backgroundColor = [UIColor whiteColor];
+        _listCollectionView.showsHorizontalScrollIndicator = NO;
+        _listCollectionView.showsVerticalScrollIndicator = NO;
         
         [_listCollectionView registerClass:[MWCategoryTableCell class] forCellWithReuseIdentifier:@"cell"];
     }

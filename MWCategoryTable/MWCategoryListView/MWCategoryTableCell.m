@@ -52,7 +52,7 @@
         [self.tableView removeObserver:self forKeyPath:@"contentOffset"];
         [self.tableView removeFromSuperview];
     }
-    self.tableView = _manager.tableView;
+    self.tableView = _manager.contentTableView;
     self.tableView.frame = self.bounds;
     [self.contentView addSubview:self.tableView];
     [self _updateContentInset];
@@ -81,6 +81,7 @@
         self.tableView.contentInset = self.parentInset;
     }
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    NSLog(@"%@", [NSValue valueWithUIEdgeInsets:self.tableView.contentInset]);
 }
 
 @end

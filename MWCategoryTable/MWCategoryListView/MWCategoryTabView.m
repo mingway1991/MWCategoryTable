@@ -138,8 +138,11 @@
 
 // 调整offset将选中的分类置为当中显示
 - (void)_adjustScrollPositionForSelectCategory:(BOOL)animated {
-    MWCategoryTabButton *categoryButton = self.categoryButtons[self.selectIndex];
     CGFloat width = CGRectGetWidth(self.bounds);
+    if (width==0 || self.contentSize.width < width) {
+        return;
+    }
+    MWCategoryTabButton *categoryButton = self.categoryButtons[self.selectIndex];
     CGFloat newOffsetX = CGRectGetMinX(categoryButton.frame)+CGRectGetWidth(categoryButton.frame)/2.f-width/2.f;
     CGFloat minOffsetX = 0.f;
     CGFloat maxOffsetX = self.contentSize.width-width;

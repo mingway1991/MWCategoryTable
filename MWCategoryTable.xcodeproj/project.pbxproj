@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31383550ED0A5107E9EA939F /* Pods_MWCategoryTable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5786C514F27B1F277A2A98B1 /* Pods_MWCategoryTable.framework */; };
+		7A0DCD1C22951A39004A4C41 /* MWNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DCD1B22951A39004A4C41 /* MWNetwork.m */; };
+		7A0DCD2022951B08004A4C41 /* MWNetwork+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DCD1F22951B08004A4C41 /* MWNetwork+Category.m */; };
+		7A0DCD2B22951B76004A4C41 /* MWCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DCD2822951B76004A4C41 /* MWCategoryModel.m */; };
+		7A0DCD2E22952503004A4C41 /* MWNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DCD2D22952503004A4C41 /* MWNewsModel.m */; };
+		7A0DCD3422953DA5004A4C41 /* MWCategoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DCD3322953DA5004A4C41 /* MWCategoryListViewController.m */; };
+		7A0DCD3722953DC1004A4C41 /* MWCategoryTableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DCD3622953DC1004A4C41 /* MWCategoryTableManager.m */; };
+		7A0DCD3B22953E34004A4C41 /* MWCategoryNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DCD3A22953E34004A4C41 /* MWCategoryNewsCell.m */; };
 		7AE27A852293C41A00F7947B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27A842293C41A00F7947B /* AppDelegate.m */; };
 		7AE27A8D2293C41C00F7947B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AE27A8C2293C41C00F7947B /* Assets.xcassets */; };
 		7AE27A902293C41C00F7947B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AE27A8E2293C41C00F7947B /* LaunchScreen.storyboard */; };
@@ -14,16 +22,31 @@
 		7AE27AA92293C46500F7947B /* UIViewController+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27AA32293C46500F7947B /* UIViewController+Swizzle.m */; };
 		7AE27AAA2293C46500F7947B /* CallStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27AA72293C46500F7947B /* CallStack.m */; };
 		7AE27AAB2293C46500F7947B /* ObserveCaton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27AA82293C46500F7947B /* ObserveCaton.m */; };
-		7AE27AAE2293C74400F7947B /* MWCategoryTableDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27AAD2293C74400F7947B /* MWCategoryTableDemoViewController.m */; };
 		7AE27AB22293C9BF00F7947B /* MWCategoryListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27AB12293C9BF00F7947B /* MWCategoryListView.m */; };
 		7AE27AB52293CAB300F7947B /* MWCategoryTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27AB42293CAB300F7947B /* MWCategoryTabView.m */; };
 		7AE27AB92293D70000F7947B /* MWCategoryTabButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27AB82293D70000F7947B /* MWCategoryTabButton.m */; };
-		7AE27ABC2293DCAF00F7947B /* MWCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27ABB2293DCAF00F7947B /* MWCategoryModel.m */; };
 		7AE27AC02294150000F7947B /* MWCategoryTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27ABF2294150000F7947B /* MWCategoryTableCell.m */; };
-		7AE27AC3229417B400F7947B /* MWCategoryTableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27AC2229417B400F7947B /* MWCategoryTableManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5351903D0191F3A966940541 /* Pods-MWCategoryTable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MWCategoryTable.release.xcconfig"; path = "Target Support Files/Pods-MWCategoryTable/Pods-MWCategoryTable.release.xcconfig"; sourceTree = "<group>"; };
+		5786C514F27B1F277A2A98B1 /* Pods_MWCategoryTable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MWCategoryTable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A0DCD182294F3CF004A4C41 /* MWDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWDefines.h; sourceTree = "<group>"; };
+		7A0DCD1A22951A39004A4C41 /* MWNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWNetwork.h; sourceTree = "<group>"; };
+		7A0DCD1B22951A39004A4C41 /* MWNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWNetwork.m; sourceTree = "<group>"; };
+		7A0DCD1D22951AA6004A4C41 /* MWWebApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWWebApi.h; sourceTree = "<group>"; };
+		7A0DCD1E22951B08004A4C41 /* MWNetwork+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MWNetwork+Category.h"; sourceTree = "<group>"; };
+		7A0DCD1F22951B08004A4C41 /* MWNetwork+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MWNetwork+Category.m"; sourceTree = "<group>"; };
+		7A0DCD2622951B76004A4C41 /* MWCategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCategoryModel.h; sourceTree = "<group>"; };
+		7A0DCD2822951B76004A4C41 /* MWCategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWCategoryModel.m; sourceTree = "<group>"; };
+		7A0DCD2C22952503004A4C41 /* MWNewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWNewsModel.h; sourceTree = "<group>"; };
+		7A0DCD2D22952503004A4C41 /* MWNewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWNewsModel.m; sourceTree = "<group>"; };
+		7A0DCD3122953DA5004A4C41 /* MWCategoryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCategoryListViewController.h; sourceTree = "<group>"; };
+		7A0DCD3322953DA5004A4C41 /* MWCategoryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWCategoryListViewController.m; sourceTree = "<group>"; };
+		7A0DCD3522953DC1004A4C41 /* MWCategoryTableManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCategoryTableManager.h; sourceTree = "<group>"; };
+		7A0DCD3622953DC1004A4C41 /* MWCategoryTableManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWCategoryTableManager.m; sourceTree = "<group>"; };
+		7A0DCD3922953E34004A4C41 /* MWCategoryNewsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryNewsCell.h; sourceTree = "<group>"; };
+		7A0DCD3A22953E34004A4C41 /* MWCategoryNewsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWCategoryNewsCell.m; sourceTree = "<group>"; };
 		7AE27A802293C41A00F7947B /* MWCategoryTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MWCategoryTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AE27A832293C41A00F7947B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7AE27A842293C41A00F7947B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -37,8 +60,6 @@
 		7AE27AA62293C46500F7947B /* UIViewController+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Swizzle.h"; sourceTree = "<group>"; };
 		7AE27AA72293C46500F7947B /* CallStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallStack.m; sourceTree = "<group>"; };
 		7AE27AA82293C46500F7947B /* ObserveCaton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObserveCaton.m; sourceTree = "<group>"; };
-		7AE27AAC2293C74400F7947B /* MWCategoryTableDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryTableDemoViewController.h; sourceTree = "<group>"; };
-		7AE27AAD2293C74400F7947B /* MWCategoryTableDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWCategoryTableDemoViewController.m; sourceTree = "<group>"; };
 		7AE27AB02293C9BF00F7947B /* MWCategoryListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryListView.h; sourceTree = "<group>"; };
 		7AE27AB12293C9BF00F7947B /* MWCategoryListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWCategoryListView.m; sourceTree = "<group>"; };
 		7AE27AB32293CAB300F7947B /* MWCategoryTabView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryTabView.h; sourceTree = "<group>"; };
@@ -46,13 +67,10 @@
 		7AE27AB62293CB3A00F7947B /* MWCategoryItemProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryItemProtocol.h; sourceTree = "<group>"; };
 		7AE27AB72293D70000F7947B /* MWCategoryTabButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryTabButton.h; sourceTree = "<group>"; };
 		7AE27AB82293D70000F7947B /* MWCategoryTabButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWCategoryTabButton.m; sourceTree = "<group>"; };
-		7AE27ABA2293DCAF00F7947B /* MWCategoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryModel.h; sourceTree = "<group>"; };
-		7AE27ABB2293DCAF00F7947B /* MWCategoryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWCategoryModel.m; sourceTree = "<group>"; };
 		7AE27ABE2294150000F7947B /* MWCategoryTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryTableCell.h; sourceTree = "<group>"; };
 		7AE27ABF2294150000F7947B /* MWCategoryTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWCategoryTableCell.m; sourceTree = "<group>"; };
-		7AE27AC1229417B400F7947B /* MWCategoryTableManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryTableManager.h; sourceTree = "<group>"; };
-		7AE27AC2229417B400F7947B /* MWCategoryTableManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWCategoryTableManager.m; sourceTree = "<group>"; };
 		7AE27AC4229418D500F7947B /* MWCategoryTableManagerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryTableManagerProtocol.h; sourceTree = "<group>"; };
+		CC1EC0FF071AB5A762FFDA08 /* Pods-MWCategoryTable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MWCategoryTable.debug.xcconfig"; path = "Target Support Files/Pods-MWCategoryTable/Pods-MWCategoryTable.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +78,97 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31383550ED0A5107E9EA939F /* Pods_MWCategoryTable.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D9BF47B1BC278A92136255C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CC1EC0FF071AB5A762FFDA08 /* Pods-MWCategoryTable.debug.xcconfig */,
+				5351903D0191F3A966940541 /* Pods-MWCategoryTable.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5CB1C5A076E46CA95AE350E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5786C514F27B1F277A2A98B1 /* Pods_MWCategoryTable.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A0DCD19229519E0004A4C41 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				7A0DCD1D22951AA6004A4C41 /* MWWebApi.h */,
+				7A0DCD1A22951A39004A4C41 /* MWNetwork.h */,
+				7A0DCD1B22951A39004A4C41 /* MWNetwork.m */,
+				7A0DCD1E22951B08004A4C41 /* MWNetwork+Category.h */,
+				7A0DCD1F22951B08004A4C41 /* MWNetwork+Category.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		7A0DCD2122951B76004A4C41 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				7A0DCD3022953DA5004A4C41 /* CategoryList */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		7A0DCD2422951B76004A4C41 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7A0DCD2622951B76004A4C41 /* MWCategoryModel.h */,
+				7A0DCD2822951B76004A4C41 /* MWCategoryModel.m */,
+				7A0DCD2C22952503004A4C41 /* MWNewsModel.h */,
+				7A0DCD2D22952503004A4C41 /* MWNewsModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7A0DCD3022953DA5004A4C41 /* CategoryList */ = {
+			isa = PBXGroup;
+			children = (
+				7A0DCD3822953E11004A4C41 /* Cell */,
+				7A0DCD3222953DA5004A4C41 /* Manager */,
+				7A0DCD3122953DA5004A4C41 /* MWCategoryListViewController.h */,
+				7A0DCD3322953DA5004A4C41 /* MWCategoryListViewController.m */,
+			);
+			path = CategoryList;
+			sourceTree = "<group>";
+		};
+		7A0DCD3222953DA5004A4C41 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7A0DCD3522953DC1004A4C41 /* MWCategoryTableManager.h */,
+				7A0DCD3622953DC1004A4C41 /* MWCategoryTableManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7A0DCD3822953E11004A4C41 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7A0DCD3922953E34004A4C41 /* MWCategoryNewsCell.h */,
+				7A0DCD3A22953E34004A4C41 /* MWCategoryNewsCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		7AE27A772293C41A00F7947B = {
 			isa = PBXGroup;
 			children = (
 				7AE27A822293C41A00F7947B /* MWCategoryTable */,
 				7AE27A812293C41A00F7947B /* Products */,
+				2D9BF47B1BC278A92136255C /* Pods */,
+				5CB1C5A076E46CA95AE350E8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,16 +183,14 @@
 		7AE27A822293C41A00F7947B /* MWCategoryTable */ = {
 			isa = PBXGroup;
 			children = (
+				7A0DCD2422951B76004A4C41 /* Model */,
+				7A0DCD2122951B76004A4C41 /* VC */,
+				7A0DCD19229519E0004A4C41 /* Network */,
 				7AE27AA22293C46500F7947B /* Observe */,
+				7AE27AAF2293C86100F7947B /* MWCategoryListView */,
 				7AE27A832293C41A00F7947B /* AppDelegate.h */,
 				7AE27A842293C41A00F7947B /* AppDelegate.m */,
-				7AE27AAC2293C74400F7947B /* MWCategoryTableDemoViewController.h */,
-				7AE27AAD2293C74400F7947B /* MWCategoryTableDemoViewController.m */,
-				7AE27ABA2293DCAF00F7947B /* MWCategoryModel.h */,
-				7AE27ABB2293DCAF00F7947B /* MWCategoryModel.m */,
-				7AE27AC1229417B400F7947B /* MWCategoryTableManager.h */,
-				7AE27AC2229417B400F7947B /* MWCategoryTableManager.m */,
-				7AE27AAF2293C86100F7947B /* MWCategoryListView */,
+				7A0DCD182294F3CF004A4C41 /* MWDefines.h */,
 				7AE27A8C2293C41C00F7947B /* Assets.xcassets */,
 				7AE27A8E2293C41C00F7947B /* LaunchScreen.storyboard */,
 				7AE27A912293C41C00F7947B /* Info.plist */,
@@ -140,9 +236,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7AE27A962293C41C00F7947B /* Build configuration list for PBXNativeTarget "MWCategoryTable" */;
 			buildPhases = (
+				EDB12FC279E94BB4DA50B4B2 /* [CP] Check Pods Manifest.lock */,
 				7AE27A7C2293C41A00F7947B /* Sources */,
 				7AE27A7D2293C41A00F7947B /* Frameworks */,
 				7AE27A7E2293C41A00F7947B /* Resources */,
+				B58AC8D05C2DEC5AF38BC00C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -197,22 +295,81 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B58AC8D05C2DEC5AF38BC00C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MWCategoryTable/Pods-MWCategoryTable-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/YYKit/YYKit.framework",
+				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MWCategoryTable/Pods-MWCategoryTable-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EDB12FC279E94BB4DA50B4B2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MWCategoryTable-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7AE27A7C2293C41A00F7947B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AE27AC3229417B400F7947B /* MWCategoryTableManager.m in Sources */,
 				7AE27AB22293C9BF00F7947B /* MWCategoryListView.m in Sources */,
 				7AE27AA92293C46500F7947B /* UIViewController+Swizzle.m in Sources */,
 				7AE27AB52293CAB300F7947B /* MWCategoryTabView.m in Sources */,
 				7AE27AB92293D70000F7947B /* MWCategoryTabButton.m in Sources */,
 				7AE27A932293C41C00F7947B /* main.m in Sources */,
-				7AE27ABC2293DCAF00F7947B /* MWCategoryModel.m in Sources */,
+				7A0DCD3422953DA5004A4C41 /* MWCategoryListViewController.m in Sources */,
+				7A0DCD3722953DC1004A4C41 /* MWCategoryTableManager.m in Sources */,
+				7A0DCD2022951B08004A4C41 /* MWNetwork+Category.m in Sources */,
+				7A0DCD2B22951B76004A4C41 /* MWCategoryModel.m in Sources */,
+				7A0DCD2E22952503004A4C41 /* MWNewsModel.m in Sources */,
 				7AE27AAA2293C46500F7947B /* CallStack.m in Sources */,
 				7AE27AAB2293C46500F7947B /* ObserveCaton.m in Sources */,
-				7AE27AAE2293C74400F7947B /* MWCategoryTableDemoViewController.m in Sources */,
 				7AE27AC02294150000F7947B /* MWCategoryTableCell.m in Sources */,
+				7A0DCD1C22951A39004A4C41 /* MWNetwork.m in Sources */,
+				7A0DCD3B22953E34004A4C41 /* MWCategoryNewsCell.m in Sources */,
 				7AE27A852293C41A00F7947B /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,6 +502,7 @@
 		};
 		7AE27A972293C41C00F7947B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC1EC0FF071AB5A762FFDA08 /* Pods-MWCategoryTable.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -363,6 +521,7 @@
 		};
 		7AE27A982293C41C00F7947B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5351903D0191F3A966940541 /* Pods-MWCategoryTable.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

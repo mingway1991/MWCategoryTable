@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ObserveCaton.h"
-#import "MWCategoryTableDemoViewController.h"
+#import "MWCategoryListViewController.h"
 
 @interface AppDelegate ()
 
@@ -24,12 +24,38 @@
     [self switchMainVc];
     [self.window makeKeyAndVisible];
     
+    if (@available(iOS 11.0, *)){
+        [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
+    }
+    
     return YES;
 }
 
 - (void)switchMainVc {
-    MWCategoryTableDemoViewController *mainVc = [[MWCategoryTableDemoViewController alloc] init];
-    self.window.rootViewController = mainVc;
+    UITabBarController *tab = [[UITabBarController alloc] init];
+    
+    MWCategoryListViewController *mainVc = [[MWCategoryListViewController alloc] init];
+    UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:mainVc];
+    nav1.tabBarItem.title = @"首页";
+    
+    UIViewController *vc2 = [[UIViewController alloc] init];
+    vc2.view.backgroundColor = [UIColor whiteColor];
+    UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:vc2];
+    nav2.tabBarItem.title = @"首页";
+    
+    UIViewController *vc3 = [[UIViewController alloc] init];
+    vc3.view.backgroundColor = [UIColor whiteColor];
+    UINavigationController *nav3 = [[UINavigationController alloc] initWithRootViewController:vc3];
+    nav3.tabBarItem.title = @"首页";
+    
+    UIViewController *vc4 = [[UIViewController alloc] init];
+    vc4.view.backgroundColor = [UIColor whiteColor];
+    UINavigationController *nav4 = [[UINavigationController alloc] initWithRootViewController:vc4];
+    nav4.tabBarItem.title = @"首页";
+    
+    tab.viewControllers = @[nav1, nav2, nav3, nav4];
+    
+    self.window.rootViewController = tab;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
