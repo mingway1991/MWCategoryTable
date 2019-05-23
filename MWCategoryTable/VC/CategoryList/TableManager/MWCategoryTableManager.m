@@ -36,6 +36,11 @@
     return UIEdgeInsetsZero;
 }
 
+- (void)willDisappear {
+    [self.contentTableView.mj_header endRefreshing];
+    [self.contentTableView.mj_footer endRefreshing];
+}
+
 #pragma mark - Request
 - (void)requestCategoryNewsWithIsRefresh:(BOOL)isRefresh {
     if (isRefresh) {

@@ -80,11 +80,6 @@
     finance_model.categoryType = @"news_finance";
     [categories addObject:finance_model];
     
-    MWCategoryModel *funny_model = [[MWCategoryModel alloc] init];
-    funny_model.categoryName = @"搞笑";
-    funny_model.categoryType = @"funny";
-    [categories addObject:funny_model];
-    
     MWCategoryModel *military_model = [[MWCategoryModel alloc] init];
     military_model.categoryName = @"军事";
     military_model.categoryType = @"news_military";

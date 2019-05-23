@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol MWCategoryTabViewDelegate <NSObject>
 
+// 更新选中索引前的回调
+- (void)tabView:(MWCategoryTabView *)tabView willSelectIndex:(NSInteger)index;
+// 更新选中索引后的回调
 - (void)tabView:(MWCategoryTabView *)tabView didSelectIndex:(NSInteger)index;
 
 @end

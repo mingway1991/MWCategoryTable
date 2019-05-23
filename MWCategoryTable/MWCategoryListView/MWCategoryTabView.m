@@ -62,6 +62,16 @@
 #pragma mark - Public
 - (void)scrollAndSelectIndex:(NSInteger)index
                     animated:(BOOL)animated {
+    if (index == self.selectIndex) {
+        return;
+    }
+    
+    // 调用willDisappear回调
+    id<MWCategoryTableManagerProtocol> tableManager = [self.categories[self.selectIndex] tableManager];
+    if ([tableManager respondsToSelector:@selector(willDisappear)]) {
+        [tableManager willDisappear];
+    }
+    
     self.selectIndex = index;
     [self _adjustScrollPositionForSelectCategory:animated];
 }
@@ -72,9 +82,13 @@
     if (newSelectedIndex == self.selectIndex) {
         return;
     }
-    self.selectIndex = newSelectedIndex;
-    [self _updateButtonsUI];
-    [self _adjustScrollPositionForSelectCategory:YES];
+    
+    if ([self.tabDelegate respondsToSelector:@selector(tabView:willSelectIndex:)]) {
+        [self.tabDelegate tabView:self willSelectIndex:newSelectedIndex];
+    }
+    
+    [self scrollAndSelectIndex:newSelectedIndex animated:YES];
+    
     if ([self.tabDelegate respondsToSelector:@selector(tabView:didSelectIndex:)]) {
         [self.tabDelegate tabView:self didSelectIndex:newSelectedIndex];
     }
