@@ -8,7 +8,7 @@
 
 #import "MWCategoryTableManager.h"
 #import "MWNetwork+Category.h"
-#import "MWNewsModel.h"
+#import "MWNewsCellModel.h"
 #import "MWCategoryNewsCell.h"
 
 @import MJRefresh;
@@ -18,7 +18,7 @@
 @property (nonatomic, strong) UITableView *contentTableView;
 @property (nonatomic, strong) MWNetwork *network;
 @property (nonatomic, strong) NSNumber *maxBehotTime;
-@property (nonatomic, strong) NSArray<MWNewsModel *> *newsModels;
+@property (nonatomic, strong) NSArray<MWNewsCellModel *> *newsCellModels;
 
 @end
 
@@ -43,9 +43,15 @@
     }
     __weak typeof(self) weakSelf = self;
     [self.network loadNewsWithCategoryType:self.parentCategoryModel.categoryType maxBehotTime:self.maxBehotTime successBlock:^(NSArray<MWNewsModel *> * _Nonnull newsModels, BOOL hasMore, NSNumber * _Nonnull maxBehotTime) {
+        NSMutableArray *newsCellModels = [NSMutableArray arrayWithCapacity:newsModels.count];
+        for (MWNewsModel *newsModel in newsModels) {
+            MWNewsCellModel *newsCellModel = [[MWNewsCellModel alloc] init];
+            newsCellModel.newsModel = newsModel;
+            [newsCellModels addObject:newsCellModel];
+        }
         if (isRefresh) {
             [weakSelf.contentTableView.mj_header endRefreshing];
-            weakSelf.newsModels = newsModels;
+            weakSelf.newsCellModels = newsCellModels;
             
             weakSelf.contentTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
                 [weakSelf requestCategoryNewsWithIsRefresh:NO];
@@ -56,9 +62,9 @@
             } else {
                 [weakSelf.contentTableView.mj_footer endRefreshingWithNoMoreData];
             }
-            NSMutableArray *newNewsModels = [NSMutableArray arrayWithArray:weakSelf.newsModels];
-            [newNewsModels addObjectsFromArray:newsModels];
-            weakSelf.newsModels = newNewsModels;
+            NSMutableArray *newNewsCellModels = [NSMutableArray arrayWithArray:weakSelf.newsCellModels];
+            [newNewsCellModels addObjectsFromArray:newsCellModels];
+            weakSelf.newsCellModels = newNewsCellModels;
         }
         [weakSelf.contentTableView reloadData];
     } failureBlock:^(NSString * _Nonnull msg) {
@@ -73,11 +79,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.newsModels.count;
+    return self.newsCellModels.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [MWCategoryNewsCell HeightForNewsModel:self.newsModels[indexPath.row]];
+    return self.newsCellModels[indexPath.row].cellHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -85,7 +91,7 @@
     if (!cell) {
         cell = [[MWCategoryNewsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    [cell updateUIWithNewsModel:self.newsModels[indexPath.row]];
+    [cell updateUIWithNewsCellModel:self.newsCellModels[indexPath.row]];
     return cell;
 }
 

@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MWNewsModel.h"
+#import "MWNewsCellModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MWCategoryNewsCell : UITableViewCell
 
-- (void)updateUIWithNewsModel:(MWNewsModel *)newsModel;
-+ (CGFloat)HeightForNewsModel:(MWNewsModel *)newsModel;
+- (void)updateUIWithNewsCellModel:(MWNewsCellModel *)newsCellModel;
 
 @end
 

@@ -81,7 +81,6 @@
         self.tableView.contentInset = self.parentInset;
     }
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
-    NSLog(@"%@", [NSValue valueWithUIEdgeInsets:self.tableView.contentInset]);
 }
 
 @end

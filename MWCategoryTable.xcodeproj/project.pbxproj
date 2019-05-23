@@ -15,6 +15,7 @@
 		7A0DCD3422953DA5004A4C41 /* MWCategoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DCD3322953DA5004A4C41 /* MWCategoryListViewController.m */; };
 		7A0DCD3722953DC1004A4C41 /* MWCategoryTableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DCD3622953DC1004A4C41 /* MWCategoryTableManager.m */; };
 		7A0DCD3B22953E34004A4C41 /* MWCategoryNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DCD3A22953E34004A4C41 /* MWCategoryNewsCell.m */; };
+		7A7BE6CD2296454900DAABDA /* MWNewsCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7BE6CC2296454900DAABDA /* MWNewsCellModel.m */; };
 		7AE27A852293C41A00F7947B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE27A842293C41A00F7947B /* AppDelegate.m */; };
 		7AE27A8D2293C41C00F7947B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AE27A8C2293C41C00F7947B /* Assets.xcassets */; };
 		7AE27A902293C41C00F7947B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AE27A8E2293C41C00F7947B /* LaunchScreen.storyboard */; };
@@ -47,6 +48,8 @@
 		7A0DCD3622953DC1004A4C41 /* MWCategoryTableManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWCategoryTableManager.m; sourceTree = "<group>"; };
 		7A0DCD3922953E34004A4C41 /* MWCategoryNewsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWCategoryNewsCell.h; sourceTree = "<group>"; };
 		7A0DCD3A22953E34004A4C41 /* MWCategoryNewsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWCategoryNewsCell.m; sourceTree = "<group>"; };
+		7A7BE6CB2296454900DAABDA /* MWNewsCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWNewsCellModel.h; sourceTree = "<group>"; };
+		7A7BE6CC2296454900DAABDA /* MWNewsCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWNewsCellModel.m; sourceTree = "<group>"; };
 		7AE27A802293C41A00F7947B /* MWCategoryTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MWCategoryTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AE27A832293C41A00F7947B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7AE27A842293C41A00F7947B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -136,21 +139,22 @@
 		7A0DCD3022953DA5004A4C41 /* CategoryList */ = {
 			isa = PBXGroup;
 			children = (
+				7A7BE6CA2296451600DAABDA /* CellModel */,
 				7A0DCD3822953E11004A4C41 /* Cell */,
-				7A0DCD3222953DA5004A4C41 /* Manager */,
+				7A0DCD3222953DA5004A4C41 /* TableManager */,
 				7A0DCD3122953DA5004A4C41 /* MWCategoryListViewController.h */,
 				7A0DCD3322953DA5004A4C41 /* MWCategoryListViewController.m */,
 			);
 			path = CategoryList;
 			sourceTree = "<group>";
 		};
-		7A0DCD3222953DA5004A4C41 /* Manager */ = {
+		7A0DCD3222953DA5004A4C41 /* TableManager */ = {
 			isa = PBXGroup;
 			children = (
 				7A0DCD3522953DC1004A4C41 /* MWCategoryTableManager.h */,
 				7A0DCD3622953DC1004A4C41 /* MWCategoryTableManager.m */,
 			);
-			path = Manager;
+			path = TableManager;
 			sourceTree = "<group>";
 		};
 		7A0DCD3822953E11004A4C41 /* Cell */ = {
@@ -160,6 +164,15 @@
 				7A0DCD3A22953E34004A4C41 /* MWCategoryNewsCell.m */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		7A7BE6CA2296451600DAABDA /* CellModel */ = {
+			isa = PBXGroup;
+			children = (
+				7A7BE6CB2296454900DAABDA /* MWNewsCellModel.h */,
+				7A7BE6CC2296454900DAABDA /* MWNewsCellModel.m */,
+			);
+			path = CellModel;
 			sourceTree = "<group>";
 		};
 		7AE27A772293C41A00F7947B = {
@@ -368,6 +381,7 @@
 				7AE27AAA2293C46500F7947B /* CallStack.m in Sources */,
 				7AE27AAB2293C46500F7947B /* ObserveCaton.m in Sources */,
 				7AE27AC02294150000F7947B /* MWCategoryTableCell.m in Sources */,
+				7A7BE6CD2296454900DAABDA /* MWNewsCellModel.m in Sources */,
 				7A0DCD1C22951A39004A4C41 /* MWNetwork.m in Sources */,
 				7A0DCD3B22953E34004A4C41 /* MWCategoryNewsCell.m in Sources */,
 				7AE27A852293C41A00F7947B /* AppDelegate.m in Sources */,

@@ -36,22 +36,22 @@
     
     MWCategoryListViewController *mainVc = [[MWCategoryListViewController alloc] init];
     UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:mainVc];
-    nav1.tabBarItem.title = @"首页";
+    nav1.tabBarItem.title = @"头条";
     
     UIViewController *vc2 = [[UIViewController alloc] init];
     vc2.view.backgroundColor = [UIColor whiteColor];
     UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:vc2];
-    nav2.tabBarItem.title = @"首页";
+    nav2.tabBarItem.title = @"其他";
     
     UIViewController *vc3 = [[UIViewController alloc] init];
     vc3.view.backgroundColor = [UIColor whiteColor];
     UINavigationController *nav3 = [[UINavigationController alloc] initWithRootViewController:vc3];
-    nav3.tabBarItem.title = @"首页";
+    nav3.tabBarItem.title = @"其他";
     
     UIViewController *vc4 = [[UIViewController alloc] init];
     vc4.view.backgroundColor = [UIColor whiteColor];
     UINavigationController *nav4 = [[UINavigationController alloc] initWithRootViewController:vc4];
-    nav4.tabBarItem.title = @"首页";
+    nav4.tabBarItem.title = @"其他";
     
     tab.viewControllers = @[nav1, nav2, nav3, nav4];
     

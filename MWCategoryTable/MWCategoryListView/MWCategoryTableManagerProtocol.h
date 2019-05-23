@@ -17,6 +17,9 @@
 - (UIEdgeInsets)inset;
 - (UIScrollView *)contentTableView;
 
+@optional
+- (void)willDisappear;
+
 @end
 
 #endif /* MWCategoryTableManagerProtocol_h */

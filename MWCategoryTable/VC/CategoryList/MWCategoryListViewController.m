@@ -85,11 +85,6 @@
     funny_model.categoryType = @"funny";
     [categories addObject:funny_model];
     
-    MWCategoryModel *joke_model = [[MWCategoryModel alloc] init];
-    joke_model.categoryName = @"段子";
-    joke_model.categoryType = @"essay_joke";
-    [categories addObject:joke_model];
-    
     MWCategoryModel *military_model = [[MWCategoryModel alloc] init];
     military_model.categoryName = @"军事";
     military_model.categoryType = @"news_military";

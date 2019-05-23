@@ -26,7 +26,7 @@
     return self;
 }
 
-- (id<MWCategoryTableManagerProtocol>)tableManager {
+- (MWCategoryTableManager *)tableManager {
     if (!_tableManager) {
         self.tableManager = [[MWCategoryTableManager alloc] init];
         _tableManager.parentCategoryModel = self;

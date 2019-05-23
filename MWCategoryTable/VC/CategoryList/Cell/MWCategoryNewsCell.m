@@ -12,10 +12,6 @@
 @import YYKit;
 @import SDWebImage;
 
-const CGFloat kNewsCellLeftRightMargin = 20.f;
-const CGFloat kNewsCellImageWidthHeightRate = 5.f/3.f; // 图片宽高比
-const CGFloat kNewsCellImagePadding = 5.f;
-
 @interface MWCategoryNewsCell ()
 
 @property (nonatomic, strong) YYLabel *titleLabel;
@@ -38,33 +34,28 @@ const CGFloat kNewsCellImagePadding = 5.f;
     return self;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    self.lineView.frame = CGRectMake(kNewsCellLeftRightMargin, CGRectGetHeight(self.bounds)-.5f, CGRectGetWidth(self.bounds)-2*kNewsCellLeftRightMargin, .5f);
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    for (UIImageView *imageView in self.imageViews) {
+        imageView.image = nil;
+    }
 }
 
-- (void)updateUIWithNewsModel:(MWNewsModel *)newsModel {
-    CGFloat titleMaxWidth = MWScreenWidth-2*kNewsCellLeftRightMargin;
-    YYTextLayout *titleTextLayout = [[self class] TextLayoutForNewModel:newsModel];
-    self.titleLabel.textLayout = titleTextLayout;
-    CGFloat titleLabelHeight = titleTextLayout.textBoundingSize.height;
-    self.titleLabel.frame = CGRectMake(kNewsCellLeftRightMargin, 15.f, titleMaxWidth, ceilf(titleLabelHeight));
+- (void)updateUIWithNewsCellModel:(MWNewsCellModel *)newsCellModel {
+    self.titleLabel.attributedText = newsCellModel.titleAttributedString;
+    self.titleLabel.frame = newsCellModel.titleFrame;
+    self.titleLabel.textLayout = newsCellModel.titleTextLayout;
     
-    CGFloat minY = CGRectGetMaxY(self.titleLabel.frame);
-    
-    if (newsModel.image_list.count > 0) {
-        CGFloat imageMinX = kNewsCellLeftRightMargin;
-        CGFloat imageMinY = minY+10.f;
-        CGFloat imageViewWidth = ((MWScreenWidth-2*kNewsCellLeftRightMargin)-2*kNewsCellImagePadding)/3.f;
-        CGFloat imageViewHeight = imageViewWidth/kNewsCellImageWidthHeightRate;
+    if (newsCellModel.hasImage) {
+        CGFloat imageMinX = newsCellModel.leftRightMargin;
         NSInteger imageViewCount = self.imageViews.count;
-        NSInteger imageCount = MIN(newsModel.image_list.count, 3);
+        NSInteger imageCount = MIN(newsCellModel.newsModel.image_list.count, 3);
         
         // 将存在的imageView显示出来
         for (NSInteger i=0; i<MIN(imageCount, imageViewCount); i++) {
             UIImageView *imageView = self.imageViews[i];
             imageView.hidden = NO;
-            imageView.frame = CGRectMake(imageMinX+i*(imageViewWidth+kNewsCellImagePadding), imageMinY, imageViewWidth, imageViewHeight);
+            imageView.frame = CGRectMake(imageMinX+i*(newsCellModel.imageWidth+newsCellModel.imagePadding), newsCellModel.imageMinY, newsCellModel.imageWidth, newsCellModel.imageHeight);
         }
         // 隐藏多余的imageView
         for (NSInteger i=imageCount; i<imageViewCount; i++) {
@@ -74,74 +65,28 @@ const CGFloat kNewsCellImagePadding = 5.f;
         // 创建不足的imageView
         for (NSInteger i=imageViewCount; i<imageCount; i++) {
             UIImageView *imageView = [[UIImageView alloc] init];
-            imageView.frame = CGRectMake(imageMinX+i*(imageViewWidth+kNewsCellImagePadding), imageMinY, imageViewWidth, imageViewHeight);
+            imageView.frame = CGRectMake(imageMinX+i*(newsCellModel.imageWidth+newsCellModel.imagePadding), newsCellModel.imageMinY, newsCellModel.imageWidth, newsCellModel.imageHeight);
             [self.contentView addSubview:imageView];
             [self.imageViews addObject:imageView];
         }
         // 显示图片
         for (NSInteger i=0; i<imageCount; i++) {
-            MWNewsImageModel *imageModel = newsModel.image_list[i];
+            MWNewsImageModel *imageModel = newsCellModel.newsModel.image_list[i];
             UIImageView *imageView = self.imageViews[i];
             [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",@"https:", imageModel.url]]];
         }
-        
-        minY = imageMinY+imageViewHeight;
     } else {
         for (UIImageView *imageView in self.imageViews) {
             imageView.hidden = YES;
         }
     }
     
-    minY += 10.f;
-    self.sourceLabel.frame = CGRectMake(kNewsCellLeftRightMargin, minY, 160.f, 14.f);
-    self.sourceLabel.attributedText = [[self class] SourceAttributedStringForNewsModel:newsModel];
-}
-
-+ (CGFloat)HeightForNewsModel:(MWNewsModel *)newsModel {
-    CGFloat topMargin = 15.f;
-    CGFloat titleLabelHeight = [[self class] TextLayoutForNewModel:newsModel].textBoundingSize.height;
-    CGFloat titleAndImagePadding = 10.f;
-    CGFloat imageViewWidth = ((MWScreenWidth-2*kNewsCellLeftRightMargin)-2*kNewsCellImagePadding)/3.f;
-    CGFloat imageViewHeight = imageViewWidth/kNewsCellImageWidthHeightRate; // 宽高比 5:3
-    CGFloat imageAndSourcePadding = 10.f;
-    CGFloat sourceLabelHeight = 14.f;
-    CGFloat bottomMargin = 15.f;
+    self.sourceLabel.attributedText = newsCellModel.sourceAttributedString;
+    self.sourceLabel.frame = newsCellModel.sourceFrame;
+    self.sourceLabel.textLayout = newsCellModel.sourceTextLayout;
     
-    CGFloat height = 0;
-    if (newsModel.image_list.count > 0) {
-        height = topMargin+ceilf(titleLabelHeight)+titleAndImagePadding+imageViewHeight+imageAndSourcePadding+sourceLabelHeight+bottomMargin;
-    } else {
-        height = topMargin+ceilf(titleLabelHeight)+imageAndSourcePadding+sourceLabelHeight+bottomMargin;
-    }
-    return height;
-}
-
-+ (YYTextLayout *)TextLayoutForNewModel:(MWNewsModel *)newsModel {
-    CGFloat titleMaxWidth = MWScreenWidth-40;
-    NSAttributedString *titleAttr = [self TitleAttributedStringForNewsModel:newsModel];
-    YYTextContainer *titleContarer = [YYTextContainer new];
-    titleContarer.size = CGSizeMake(titleMaxWidth, CGFLOAT_MAX);
-    titleContarer.maximumNumberOfRows = 0;
-    YYTextLayout *titleLayout = [YYTextLayout layoutWithContainer:titleContarer text:titleAttr];
-    return titleLayout;
-}
-
-+ (NSAttributedString *)TitleAttributedStringForNewsModel:(MWNewsModel *)newsModel {
-    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:newsModel.title];
-    text.alignment = NSTextAlignmentLeft;
-    text.lineSpacing = 5;
-    text.font = [UIFont systemFontOfSize:16];
-    text.color = [UIColor blackColor];
-    return text;
-}
-
-+ (NSAttributedString *)SourceAttributedStringForNewsModel:(MWNewsModel *)newsModel {
-    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:newsModel.source];
-    text.alignment = NSTextAlignmentLeft;
-    text.lineSpacing = 5;
-    text.font = [UIFont systemFontOfSize:12];
-    text.color = [UIColor lightGrayColor];
-    return text;
+    self.lineView.hidden = !newsCellModel.hasLine;
+    self.lineView.frame = newsCellModel.lineFrame;
 }
 
 #pragma mark - LazyLoad
