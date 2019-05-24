@@ -29,7 +29,7 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    self.listView.frame = self.view.bounds;
+    self.listView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds));
 }
 
 #pragma mark - Private

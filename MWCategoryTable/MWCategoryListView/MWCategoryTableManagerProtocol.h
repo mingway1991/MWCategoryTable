@@ -14,7 +14,6 @@
 @protocol MWCategoryTableManagerProtocol <NSObject>
 
 @required
-- (UIEdgeInsets)inset;  // 默认传UIEdgeInsetsZero，如果需要在table上l预留空间，则设置对应的值
 - (UIScrollView *)contentTableView; // 返回scrollView、tableView、collectionView，用于内容显示
 
 @optional

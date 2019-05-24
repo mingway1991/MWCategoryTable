@@ -32,10 +32,6 @@
     return self;
 }
 
-- (UIEdgeInsets)inset {
-    return UIEdgeInsetsZero;
-}
-
 - (void)didAppear {
     if (self.newsCellModels.count == 0 && ![self.contentTableView.mj_header isRefreshing]) {
         [self.contentTableView.mj_header beginRefreshing];
@@ -112,6 +108,10 @@
         _contentTableView.delegate = self;
         _contentTableView.dataSource = self;
         _contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        if(@available(iOS 11.0, *)){
+            // 解决table列表加载闪卡问题
+            _contentTableView.estimatedRowHeight = 0;
+        }
         
         __weak typeof(self) weakSelf = self;
         _contentTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
