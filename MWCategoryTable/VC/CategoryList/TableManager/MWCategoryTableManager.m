@@ -27,7 +27,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self.contentTableView.mj_header beginRefreshing];
+        
     }
     return self;
 }
@@ -36,9 +36,14 @@
     return UIEdgeInsetsZero;
 }
 
-- (void)willDisappear {
-    [self.contentTableView.mj_header endRefreshing];
-    [self.contentTableView.mj_footer endRefreshing];
+- (void)didAppear {
+    if (self.newsCellModels.count == 0 && ![self.contentTableView.mj_header isRefreshing]) {
+        [self.contentTableView.mj_header beginRefreshing];
+    }
+}
+
+- (void)didDisappear {
+    
 }
 
 #pragma mark - Request

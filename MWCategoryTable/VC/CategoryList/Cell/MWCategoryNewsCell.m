@@ -65,6 +65,7 @@
         // 创建不足的imageView
         for (NSInteger i=imageViewCount; i<imageCount; i++) {
             UIImageView *imageView = [[UIImageView alloc] init];
+            imageView.backgroundColor = [UIColor lightGrayColor];
             imageView.frame = CGRectMake(imageMinX+i*(newsCellModel.imageWidth+newsCellModel.imagePadding), newsCellModel.imageMinY, newsCellModel.imageWidth, newsCellModel.imageHeight);
             [self.contentView addSubview:imageView];
             [self.imageViews addObject:imageView];

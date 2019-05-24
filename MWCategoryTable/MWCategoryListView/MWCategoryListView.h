@@ -6,6 +6,11 @@
 //  Copyright © 2019 聽風入髓. All rights reserved.
 //
 
+/*
+ TODO：
+ 如果tableView正在刷新，切换分类，再切换回来，原始 contentInset bottom 40，切换回来 bottom变为0，造成底部上移40
+ */
+
 #import <UIKit/UIKit.h>
 #import "MWCategoryItemProtocol.h"
 

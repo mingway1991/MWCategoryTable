@@ -24,6 +24,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self _generateCategories];
     [self.view addSubview:self.listView];
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)viewDidLayoutSubviews {

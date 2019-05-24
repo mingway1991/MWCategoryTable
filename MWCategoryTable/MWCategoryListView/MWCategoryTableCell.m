@@ -25,10 +25,6 @@
     return self;
 }
 
-- (void)dealloc {
-    
-}
-
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.tableView.frame = self.bounds;
@@ -36,51 +32,31 @@
 
 - (void)prepareForReuse {
     [super prepareForReuse];
-    _category = nil;
 }
 
 #pragma mark - Setter
-- (void)setParentInset:(UIEdgeInsets)parentInset {
-    _parentInset = parentInset;
-    [self _updateContentInset];
-}
-
 - (void)setCategory:(id<MWCategoryItemProtocol>)category {
+    if (category == _category) { return; }
+    
+    if (self.tableView) {
+        [self.tableView removeFromSuperview];
+        self.tableView = nil;
+    }
     _category = category;
     _manager = [category tableManager];
-    if (self.tableView) {
-        [self.tableView removeObserver:self forKeyPath:@"contentOffset"];
-        [self.tableView removeFromSuperview];
-    }
     self.tableView = _manager.contentTableView;
-    self.tableView.frame = self.bounds;
     [self.contentView addSubview:self.tableView];
-    [self _updateContentInset];
-    [self.tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-}
-
-#pragma mark - Observe
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"contentOffset"]) {
-        if (self.category && [self.delegate respondsToSelector:@selector(tableCellUpdateOffsetY:category:newOffsetY:)]) {
-            [self.delegate tableCellUpdateOffsetY:self category:self.category newOffsetY:self.tableView.contentOffset.y];
-        }
-    }
+    [self setNeedsLayout];
 }
 
 #pragma mark - Public
-- (void)updateOffsetY:(CGFloat)offsetY {
-    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, offsetY)];
+- (void)updateInset:(UIEdgeInsets)inset {
+    self.tableView.contentInset = inset;
+    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
 }
 
-#pragma mark - Private
-- (void)_updateContentInset {
-    if ([_manager respondsToSelector:@selector(inset)]) {
-        self.tableView.contentInset = UIEdgeInsetsMake(_manager.inset.top+self.parentInset.top, _manager.inset.left+self.parentInset.left, _manager.inset.bottom+self.parentInset.bottom, _manager.inset.right+self.parentInset.right);
-    } else {
-        self.tableView.contentInset = self.parentInset;
-    }
-    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+- (void)updateOffsetY:(CGFloat)offsetY {
+    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, offsetY-self.tableView.contentInset.top)];
 }
 
 @end

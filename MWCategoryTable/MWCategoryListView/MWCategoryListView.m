@@ -10,16 +10,19 @@
 #import "MWCategoryTabView.h"
 #import "MWCategoryTableCell.h"
 
+static NSString *kCategoryTableContentOffsetKeyPath = @"contentOffset";
+static NSString *kCategoryTableContentInsetKeyPath = @"contentInset";
+
 @interface MWCategoryListView () <UICollectionViewDelegateFlowLayout,
                                 UICollectionViewDataSource,
                                 UICollectionViewDelegate,
                                 UIScrollViewDelegate,
-                                MWCategoryTabViewDelegate,
-                                MWCategoryTableCellDelegate>
+                                MWCategoryTabViewDelegate>
 
 @property (nonatomic, strong) MWCategoryTabView *tabView;
 @property (nonatomic, strong) UIView *bottomLineView;
 @property (nonatomic, strong) UICollectionView *listCollectionView;
+@property (nonatomic, strong) NSMutableArray<NSValue *> * tableInsets; // 各列表contentInset记录值
 @property (nonatomic, strong) NSMutableArray<NSNumber *> * tableOffsets; // 各列表位移记录值
 
 @end
@@ -60,6 +63,7 @@
     self.topInset = 0.f;
     self.bottomInset = 0.f;
     self.tabViewHeight = 40.f;
+    self.tableInsets = [NSMutableArray array];
     self.tableOffsets = [NSMutableArray array];
     
     [self addSubview:self.listCollectionView];
@@ -78,36 +82,95 @@
 
 #pragma mark - Setter
 - (void)setCategories:(NSArray<id<MWCategoryItemProtocol>> *)categories {
+    for (id<MWCategoryItemProtocol> category in _categories) {
+        // 移除监听contentInset和contentOffset变化
+        [category.tableManager.contentTableView removeObserver:self forKeyPath:kCategoryTableContentInsetKeyPath];
+        [category.tableManager.contentTableView removeObserver:self forKeyPath:kCategoryTableContentOffsetKeyPath];
+    }
     _categories = categories;
+    [self _generateTableInsets];
     [self _generateTableOffsets];
     self.tabView.categories = categories;
+    if (categories.count > 0) {
+        // 添加监听contentInset和contentOffset变化
+        NSInteger index = 0;
+        for (id<MWCategoryItemProtocol> category in categories) {
+            [category.tableManager.contentTableView addObserver:self forKeyPath:kCategoryTableContentInsetKeyPath options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:(__bridge void *)@(index)];
+            [category.tableManager.contentTableView addObserver:self forKeyPath:kCategoryTableContentOffsetKeyPath options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:(__bridge void *)@(index)];
+            index++;
+        }
+        // 设定默认选中索引
+        [self.tabView scrollAndSelectIndex:0 animated:NO];
+        // 回调将要显示tableManager
+        id<MWCategoryTableManagerProtocol> tableManager = [self.categories[0] tableManager];
+        if ([tableManager respondsToSelector:@selector(didAppear)]) {
+            [tableManager didAppear];
+        }
+    }
 }
 
 - (void)setTopInset:(CGFloat)topInset {
     _topInset = topInset;
+    [self _generateTableInsets];
     [self _generateTableOffsets];
     [self setNeedsLayout];
 }
 
 - (void)setBottomInset:(CGFloat)bottomInset {
     _bottomInset = bottomInset;
+    [self _generateTableInsets];
     [self _generateTableOffsets];
     [self setNeedsLayout];
 }
 
 - (void)setTabViewHeight:(CGFloat)tabViewHeight {
     _tabViewHeight = tabViewHeight;
+    [self _generateTableInsets];
     [self _generateTableOffsets];
     [self setNeedsLayout];
 }
 
 #pragma mark - Private
+// 生成默认tableInset数组，用于初始化tableView的inset
+- (void)_generateTableInsets {
+    [self.tableInsets removeAllObjects];
+    for (NSInteger i=0; i<self.categories.count; i++) {
+        id<MWCategoryTableManagerProtocol> manager = [self.categories[i] tableManager];
+        UIEdgeInsets insets = UIEdgeInsetsMake(manager.inset.top+self.topInset+self.tabViewHeight, manager.inset.left, manager.inset.bottom+self.bottomInset, manager.inset.right);
+        [self.tableInsets addObject:[NSValue valueWithUIEdgeInsets:insets]];
+    }
+}
+// 生成默认tableOffset数组，用于初始化tableView的offset
 - (void)_generateTableOffsets {
     [self.tableOffsets removeAllObjects];
     for (NSInteger i=0; i<self.categories.count; i++) {
-        id<MWCategoryTableManagerProtocol> manager = [self.categories[i] tableManager];
-        CGFloat initOffset = -(self.topInset+self.tabViewHeight+manager.inset.top);
-        [self.tableOffsets addObject:@(initOffset)];
+        [self.tableOffsets addObject:@(0)];
+    }
+}
+
+#pragma mark - Observe
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:kCategoryTableContentInsetKeyPath]) {
+        // 更新保存contentInset
+        UIScrollView *scrollView = (UIScrollView *)object;
+        UIEdgeInsets newInset = scrollView.contentInset;
+        NSInteger index = [(__bridge NSNumber *)context integerValue];
+        UIEdgeInsets oldInset = [self.tableInsets[index] UIEdgeInsetsValue];
+        if (UIEdgeInsetsEqualToEdgeInsets(oldInset, newInset)) {
+            [self.tableInsets replaceObjectAtIndex:index withObject:[NSValue valueWithUIEdgeInsets:newInset]];
+        }
+    } else if ([keyPath isEqualToString:kCategoryTableContentOffsetKeyPath]) {
+        // 更新保存contentOffset
+        UIScrollView *scrollView = (UIScrollView *)object;
+        CGFloat newOffsetY = scrollView.contentOffset.y+scrollView.contentInset.top;
+        if (newOffsetY < 0) {
+            newOffsetY = 0;
+        }
+        NSInteger index = [(__bridge NSNumber *)context integerValue];
+        CGFloat oldOffsetY = [self.tableOffsets[index] floatValue];
+        if (newOffsetY != oldOffsetY) {
+            [self.tableOffsets replaceObjectAtIndex:index withObject:@(newOffsetY)];
+        }
     }
 }
 
@@ -125,9 +188,8 @@
     if (!cell) {
         cell = [[MWCategoryTableCell alloc] init];
     }
-    cell.delegate = self;
     cell.category = self.categories[indexPath.row];
-    cell.parentInset = UIEdgeInsetsMake(self.topInset+self.tabViewHeight, 0, self.bottomInset, 0);
+    [cell updateInset:[self.tableInsets[indexPath.row] UIEdgeInsetsValue]];
     [cell updateOffsetY:[self.tableOffsets[indexPath.row] floatValue]];
     return cell;
 }
@@ -141,23 +203,36 @@
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    // 根据滚动offset，选中对应的category
     NSInteger newIndex = self.listCollectionView.contentOffset.x/CGRectGetWidth(self.bounds);
-    [self.tabView scrollAndSelectIndex:newIndex animated:YES];
+    if (newIndex != self.tabView.selectIndex) {
+        id<MWCategoryTableManagerProtocol> oldTableManager = [self.categories[self.tabView.selectIndex] tableManager];
+        if ([oldTableManager respondsToSelector:@selector(didDisappear)]) {
+            [oldTableManager didDisappear];
+        }
+        [self.tabView scrollAndSelectIndex:newIndex animated:YES];
+        id<MWCategoryTableManagerProtocol> newTableManager = [self.categories[newIndex] tableManager];
+        if ([newTableManager respondsToSelector:@selector(didAppear)]) {
+            [newTableManager didAppear];
+        }
+    }
 }
 
 #pragma mark - MWCategoryTabViewDelegate
 - (void)tabView:(MWCategoryTabView *)tabView
- didSelectIndex:(NSInteger)index {
+willSelectIndex:(NSInteger)index {
+    id<MWCategoryTableManagerProtocol> tableManager = [self.categories[self.tabView.selectIndex] tableManager];
+    if ([tableManager respondsToSelector:@selector(didDisappear)]) {
+        [tableManager didDisappear];
+    }
     [self.listCollectionView setContentOffset:CGPointMake(index*CGRectGetWidth(self.bounds), self.listCollectionView.contentOffset.y)];
 }
 
-#pragma mark - MWCategoryTableCellDelegate
-- (void)tableCellUpdateOffsetY:(MWCategoryTableCell *)tableCell
-                      category:(id<MWCategoryItemProtocol>)category
-                    newOffsetY:(CGFloat)newOffsetY {
-    NSInteger index = [self.categories indexOfObject:category];
-    [self.tableOffsets replaceObjectAtIndex:index withObject:@(newOffsetY)];
+- (void)tabView:(MWCategoryTabView *)tabView
+ didSelectIndex:(NSInteger)index {
+    id<MWCategoryTableManagerProtocol> tableManager = [self.categories[index] tableManager];
+    if ([tableManager respondsToSelector:@selector(didAppear)]) {
+        [tableManager didAppear];
+    }
 }
 
 #pragma mark - LazyLoad
