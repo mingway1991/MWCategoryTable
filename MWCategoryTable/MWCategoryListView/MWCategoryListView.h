@@ -21,7 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat topInset;
 @property (nonatomic, assign) CGFloat bottomInset;
 @property (nonatomic, assign) CGFloat tabViewHeight; // 默认40
-@property (nonatomic, strong) NSArray<id<MWCategoryItemProtocol>> *categories;
+@property (nonatomic, strong) NSArray<id<MWCategoryItemProtocol>> *categories; // 设置分类条目，包含必要的协议
+@property (nonatomic, strong) NSArray<NSValue *> *categoryContentInsets; // 设置分类内容相对内边距，默认UIEdgeInsetsZero
 
 - (instancetype)initWithCategories:(NSArray<id<MWCategoryItemProtocol>> *)categories;
 - (instancetype)initWithFrame:(CGRect)frame

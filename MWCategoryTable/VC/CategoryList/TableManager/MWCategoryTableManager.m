@@ -10,6 +10,7 @@
 #import "MWNetwork+Category.h"
 #import "MWNewsCellModel.h"
 #import "MWCategoryNewsCell.h"
+#import "MWDefines.h"
 
 @import MJRefresh;
 

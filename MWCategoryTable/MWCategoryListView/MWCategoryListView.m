@@ -122,12 +122,18 @@ static NSString *kCategoryTableContentOffsetKeyPath = @"contentOffset";
     [self setNeedsLayout];
 }
 
+- (void)setCategoryContentInsets:(NSArray<NSValue *> *)categoryContentInsets {
+    _categoryContentInsets = categoryContentInsets;
+    [self _resetTableInsets];
+}
+
 #pragma mark - Private
 // 生成默认tableInset数组，用于初始化tableView的inset
 - (void)_resetTableInsets {
     for (NSInteger i=0; i<self.categories.count; i++) {
         id<MWCategoryTableManagerProtocol> manager = [self.categories[i] tableManager];
-        UIEdgeInsets inset = UIEdgeInsetsMake(self.topInset+self.tabViewHeight, 0, self.bottomInset, 0);
+        UIEdgeInsets contentInset = (self.categoryContentInsets.count == self.categories.count) ? [self.categoryContentInsets[i] UIEdgeInsetsValue] : UIEdgeInsetsZero;
+        UIEdgeInsets inset = UIEdgeInsetsMake(self.topInset+self.tabViewHeight+contentInset.top, contentInset.left, self.bottomInset+contentInset.bottom, contentInset.right);
         manager.contentTableView.contentInset = inset;
     }
 }
